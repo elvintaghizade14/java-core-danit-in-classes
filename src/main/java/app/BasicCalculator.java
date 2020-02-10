@@ -1,9 +1,12 @@
 package app;
 
+import java.io.InputStream;
 import java.util.Scanner;
 
 public class BasicCalculator {
     public static void main(String[] args) {
+        // InputStream in = System.in;
+        // Scanner scanner = new Scanner(in);
         Scanner input = new Scanner(System.in);
 
         //asking input for first number
@@ -17,5 +20,6 @@ public class BasicCalculator {
         //adding numbers and printing on console
         System.out.print("Sum of " + first_num + " and " + second_num + " is: " +
                 (first_num + second_num));
+
     }
 }
