@@ -20,6 +20,5 @@ public class BasicCalculator {
         //adding numbers and printing on console
         System.out.print("Sum of " + first_num + " and " + second_num + " is: " +
                 (first_num + second_num));
-
     }
 }
