@@ -1,7 +1,6 @@
 package app;
 
 import java.util.Scanner;
-import java.util.Formatter;
 
 public class basicCalculator {
     public static void main(String[] args) {
