@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class basicCalculator {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+
         //asking input for first number
         System.out.print("Please enter first number:   ");
         double first_num = input.nextDouble();
