@@ -1,17 +1,46 @@
 package app;
 
+import java.util.Arrays;
+
 public class PositiveAndNegativeInRandomArrayApp {
     public static void main(String[] args) {
         final int LEN = 30;
+        // 1. generation of random numbers / filling
+        int[] base = new int[LEN];
 
-        int[] arr = new int[LEN];
+        int pos_indx = 0;
+        int neg_indx = 0;
 
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = (int) (Math.random() * 201 - 100);
+        for (int i = 0; i < base.length; i++) {
+            int r = (int) (Math.random() * 201 - 100);
+            base[i] = (r == 0) ? (r + 1) : r;
+
+            if (base[i] > 0)
+                pos_indx++;
+            else
+                neg_indx++;
         }
-        for (int el : arr) {
-            System.out.print(el + " ");
+        // operations
+        int[] positive = new int[pos_indx];
+        int[] negative = new int[neg_indx];
+
+        pos_indx = 0;
+        neg_indx = 0;
+
+        for (int value : base) {
+            if (value > 0) {
+                positive[pos_indx] = value;
+                pos_indx++;
+            } else {
+                negative[neg_indx] = value;
+                neg_indx++;
+            }
         }
+        // 3. printing
+        System.out.println("Ppositive: ");
+        System.out.println(Arrays.toString(positive));
+        System.out.println("Negative: ");
+        System.out.println(Arrays.toString(negative));
 
     }
 }
