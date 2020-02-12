@@ -1,7 +1,5 @@
 package app;
 
-import java.io.InputStream;
-
 public class HelloWorldApp {
 
     public static void main(String[] args) {

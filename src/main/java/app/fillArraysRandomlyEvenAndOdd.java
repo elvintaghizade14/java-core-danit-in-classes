@@ -2,7 +2,7 @@ package app;
 
 import java.util.Arrays;
 
-public class fillArraysRandomlyEvenAndodd {
+public class fillArraysRandomlyEvenAndOdd {
 
     public static void main(String[] args) {
 
