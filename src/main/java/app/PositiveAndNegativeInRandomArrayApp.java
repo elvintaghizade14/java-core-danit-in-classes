@@ -17,23 +17,19 @@ public class PositiveAndNegativeInRandomArrayApp {
 
             if (base[i] > 0)
                 pos_indx++;
-            else
+            else if (base[i] < 0)
                 neg_indx++;
         }
         // operations
         int[] positive = new int[pos_indx];
         int[] negative = new int[neg_indx];
 
-        pos_indx = 0;
-        neg_indx = 0;
-
         for (int value : base) {
             if (value > 0) {
-                positive[pos_indx] = value;
-                pos_indx++;
+                positive[positive.length-pos_indx--] = value;
+
             } else {
-                negative[neg_indx] = value;
-                neg_indx++;
+                negative[negative.length-neg_indx--] = value;
             }
         }
         // 3. printing
