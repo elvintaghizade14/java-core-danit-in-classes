@@ -13,14 +13,13 @@ public class fillTwoDimensionalArray {
             for (int row = 0; row < HEIGHT; row++) {
                 for (int col = 0; col < WIDTH; col++) {
                     if ((row + 1 == level && col + 1 >= level && WIDTH - col >= level) ||
-                            (HEIGHT - row == level && col + 1 >= level && WIDTH - col >= level) ||
-                            (row + 1 == level && col + 1 == level)
+                            (HEIGHT - row == level && col + 1 >= level && WIDTH - col >= level)
+//                          ||  (?)
                     ) a[row][col] = level;
 
                 }
             }
         }
-
         // output
         StringBuilder out = new StringBuilder();
         for (int row = 0; row < HEIGHT; row++) {
