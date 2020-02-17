@@ -9,8 +9,8 @@ public class alphabet {
 //        System.out.print(sb.toString());
         char[] alphabet = new char[26];
         for (char c = 'A', counter=0; c <= 'Z'; c++) {
-            alphabet[counter++] = c;
+            alphabet[c-'A'] = c;
         }
-        System.out.print(Arrays.toString(alphabet));
+        System.out.println(new String(alphabet));
     }
 }
