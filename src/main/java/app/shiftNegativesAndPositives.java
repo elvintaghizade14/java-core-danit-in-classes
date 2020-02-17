@@ -21,7 +21,7 @@ public class shiftNegativesAndPositives {
     }
 
     private static int[] shiftElements(int[] arr, int countNeg) {
-        if (countNeg == 0 || countNeg == 1) return arr;
+        if (countNeg < 2) return arr;
         else {
             int[] posIndx = new int[arr.length - countNeg];
             int counter = 0;
