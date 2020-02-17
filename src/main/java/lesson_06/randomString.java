@@ -1,4 +1,4 @@
-package app;
+package lesson_06;
 
 public class randomString {
     public static void main(String[] args) {
