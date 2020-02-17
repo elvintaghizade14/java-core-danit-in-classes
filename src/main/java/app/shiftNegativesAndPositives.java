@@ -31,10 +31,10 @@ public class shiftNegativesAndPositives {
                     counter++;
                 }
             }
-            for (int i = posIndx.length-1; i > 0; i--) {
+            for (int i = posIndx.length - 1; i > 0; i--) {
                 int tmp = arr[posIndx[i]];
-                arr[posIndx[i]] = arr[posIndx[i-1]];
-                arr[posIndx[i-1]] = tmp;
+                arr[posIndx[i]] = arr[posIndx[i - 1]];
+                arr[posIndx[i - 1]] = tmp;
             }
             return arr;
         }
