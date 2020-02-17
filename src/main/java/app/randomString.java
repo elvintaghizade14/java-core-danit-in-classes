@@ -12,9 +12,8 @@ public class randomString {
                 vowels.append((char) randNum);
             else consonants.append((char) randNum);
         }
-        System.out.println(randStr);
-        System.out.println(vowels);
-        System.out.println(consonants);
-
+        System.out.println(randStr.toString());
+        System.out.println(vowels.toString());
+        System.out.println(consonants.toString());
     }
 }
