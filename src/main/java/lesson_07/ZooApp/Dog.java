@@ -2,11 +2,11 @@ package lesson_07.ZooApp;
 
 public class Dog extends Animal {
     public Dog(String name) {
-        super.name = name;
+        super(name);
     }
 
     @Override
     public String toString() {
-        return "Dog{" + "name='" + name + '\'' + '}';
+        return String.format("Dog{name='%s'}", name);
     }
 }
