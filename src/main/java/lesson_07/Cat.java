@@ -1,10 +1,9 @@
 package lesson_07;
 
 public class Cat extends Animal {
-    String name;
 
     public Cat(String name) {
-        this.name = name;
+        super.name = name;
     }
 
     @Override
