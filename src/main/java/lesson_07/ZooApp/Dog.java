@@ -1,4 +1,4 @@
-package lesson_07;
+package lesson_07.ZooApp;
 
 public class Dog extends Animal {
     public Dog(String name) {
