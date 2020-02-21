@@ -33,6 +33,5 @@ public class Main {
       default:
         return Circle.rand();
     }
-
   }
 }
