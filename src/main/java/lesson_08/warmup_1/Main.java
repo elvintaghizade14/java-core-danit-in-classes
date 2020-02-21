@@ -29,8 +29,9 @@ public class Main {
       case 1:
         return Rectangle.rand();
       case 2:
+      default:
         return Circle.rand();
     }
-    return null;
+
   }
 }
