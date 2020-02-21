@@ -11,7 +11,7 @@ public class Main {
         figures.add(circle);
         figures.add(rectangle);
         figures.add(triangle);
-        for (Figure f:figures) {
+        for (Figure f : figures) {
             System.out.println(f.area());
         }
     }
