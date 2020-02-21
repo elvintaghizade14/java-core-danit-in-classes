@@ -9,6 +9,10 @@ public class Rectangle extends Figure{
     this.right = right;
   }
 
+  public static Rectangle rand() {
+    return new Rectangle(Point.randPoint(), Point.randPoint());
+  }
+
   @Override
   double area() {
     return Math.abs(left.x - right.x) * Math.abs(left.x - right.x);

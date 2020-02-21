@@ -9,6 +9,10 @@ public class Circle extends Figure {
     this.center = center;
   }
 
+  public static Circle rand() {
+    return new Circle(Math.random()*10+1, Point.randPoint());
+  }
+
   @Override
   double area() {
     return Math.PI * Math.pow(radius, 2);

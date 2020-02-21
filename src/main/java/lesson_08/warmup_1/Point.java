@@ -8,4 +8,8 @@ public class Point {
     this.x = x;
     this.y = y;
   }
+
+  public static Point randPoint() {
+    return new Point(Math.random() * 20, Math.random() * 20);
+  }
 }

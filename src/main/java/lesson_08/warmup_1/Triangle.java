@@ -11,6 +11,10 @@ public class Triangle extends Figure {
     this.p2 = p2;
   }
 
+  public static Triangle rand() {
+    return new Triangle(Point.randPoint(), Point.randPoint(), Point.randPoint());
+  }
+
   @Override
   double area() {
     double l1 = Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
