@@ -17,6 +17,7 @@ public class Main {
 
     double total = 0;
     for (Figure f : figures) {
+      System.out.println(f);
       total += f.area();
     }
     System.out.printf("Total area is: %s\n", total);

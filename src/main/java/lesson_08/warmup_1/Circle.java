@@ -17,4 +17,9 @@ public class Circle extends Figure {
   double area() {
     return Math.PI * Math.pow(radius, 2);
   }
+
+  @Override
+  public String toString() {
+    return String.format("Circle{radius=%s, center=%s}", radius, center);
+  }
 }

@@ -21,4 +21,9 @@ public class Triangle extends Figure {
     double l2 = Math.sqrt(Math.pow(p3.x - p1.x, 2) + Math.pow(p3.y - p1.y, 2));
     return l2 * l1 / 2;
   }
+
+  @Override
+  public String toString() {
+    return String.format("Triangle{p1=%s, p3=%s, p2=%s}", p1, p3, p2);
+  }
 }

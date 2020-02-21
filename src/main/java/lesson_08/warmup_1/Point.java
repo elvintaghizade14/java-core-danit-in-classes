@@ -12,4 +12,9 @@ public class Point {
   public static Point randPoint() {
     return new Point(Math.random() * 20, Math.random() * 20);
   }
+
+  @Override
+  public String toString() {
+    return String.format("Point{x=%s, y=%s}", x, y);
+  }
 }

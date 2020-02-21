@@ -17,4 +17,9 @@ public class Rectangle extends Figure{
   double area() {
     return Math.abs(left.x - right.x) * Math.abs(left.x - right.x);
   }
+
+  @Override
+  public String toString() {
+    return String.format("Rectangle{left=%s, right=%s}", left, right);
+  }
 }
