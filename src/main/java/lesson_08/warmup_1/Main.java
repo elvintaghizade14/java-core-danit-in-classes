@@ -1,4 +1,4 @@
-package lesson_08;
+package lesson_08.warmup_1;
 
 import java.util.ArrayList;
 
