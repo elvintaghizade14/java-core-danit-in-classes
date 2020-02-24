@@ -1,4 +1,4 @@
-package lesson_09.warmup_02.warmup_01;
+package lesson_09.warmup_02;
 
 public abstract class Formatter {
   public abstract String format(String s);

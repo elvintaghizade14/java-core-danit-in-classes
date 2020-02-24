@@ -1,4 +1,4 @@
-package lesson_09.warmup_02.warmup_01;
+package lesson_09.warmup_02;
 
 import lesson_09.warmup_01.Formatter;
 
