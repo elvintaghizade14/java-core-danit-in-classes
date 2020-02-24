@@ -5,6 +5,5 @@ public class FormatterApp {
     System.out.println(new Formatter1("hello")); // hello
     System.out.println(new Formatter2(new Formatter1("hellllloooo")));
     System.out.println(new Formatter3("hello")); // hello
-
   }
 }
