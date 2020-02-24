@@ -4,6 +4,7 @@ import lesson_09.warmup_01.Formatter;
 
 public class Formatter1 extends Formatter {
   public String s;
+
   public Formatter1(String s) {
     this.s = s;
   }
