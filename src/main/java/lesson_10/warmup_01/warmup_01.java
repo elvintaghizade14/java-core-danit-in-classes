@@ -12,7 +12,7 @@ public class warmup_01 {
           sb.append(origin.charAt(i));
         }
       }
-      return sb.toString();
+      return sb.toString().toLowerCase();
     }
   }
 }
