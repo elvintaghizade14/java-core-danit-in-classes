@@ -25,9 +25,14 @@ public class warmup_02 {
 //    System.out.println(sb.toString());
 
 //    ----------3rd solution----------
-    List<Sentence> sentences = subjects.stream().flatMap(s ->
-            verbs.stream().flatMap(v -> objects.stream().map(o -> new Sentence(s, v, o))))
-            .collect(Collectors.toList());
+    List<Sentence> sentences =
+            subjects.stream().flatMap(s ->
+                    verbs.stream().flatMap(v ->
+                            objects.stream().map(o -> new Sentence(s, v, o)
+                            )
+                    )
+            )
+                    .collect(Collectors.toList());
 
     // 3. output
     for (Sentence s : sentences) System.out.println(s.toString());
