@@ -15,8 +15,6 @@ public class warmup_01 {
   }
 
   public static int findAnswer(String s) {
-    int num1;
-    int num2;
     if (s.contains("+"))
       return parseFromHead(s, "+") + parseFromBreak(s, "+");
     else if (s.contains("-"))
