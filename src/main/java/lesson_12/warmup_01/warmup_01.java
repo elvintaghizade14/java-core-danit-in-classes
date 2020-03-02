@@ -4,39 +4,34 @@ import java.util.Scanner;
 
 public class warmup_01 {
   public static void main(String[] args) {
+
     Scanner sc = new Scanner(System.in);
     String sent = sc.nextLine();
-
     while (!sent.toLowerCase().equals("quit")) {
-      int brPoint = findOperator(sent);
-      char o = sent.charAt(brPoint);
-
-      int num1 = Integer.parseInt(sent.substring(0, brPoint));
-      int num2 = Integer.parseInt(sent.substring(brPoint + 1));
-      int ans = findAnswer(num1, num2, o);
-
-      System.out.printf("Answer is: %d\n", ans);
+      System.out.printf("Answer is: %d\n", findAnswer(sent));
       sent = sc.nextLine();
     }
+    System.out.print("Good bye...");
   }
 
-  private static int findAnswer(int n1, int n2, char o) {
-    switch (o) {
-      case '+':
-        return n1 + n2;
-      case '-':
-        return n1 - n2;
-      case '*':
-        return n1 * n2;
-      default:
-        return n1 / n2;
-    }
+  public static int findAnswer(String s) {
+    int num1;
+    int num2;
+    if (s.contains("+"))
+      return parseFromHead(s, "+") + parseFromBreak(s, "+");
+    else if (s.contains("-"))
+      return parseFromHead(s, "-") - parseFromBreak(s, "-");
+    else if (s.contains("*"))
+      return parseFromHead(s, "*") * parseFromBreak(s, "*");
+    else
+      return parseFromHead(s, "/") / parseFromBreak(s, "/");
   }
 
-  public static int findOperator(String s) {
-    if (s.contains("+")) return s.indexOf("+");
-    else if (s.contains("-")) return s.indexOf("-");
-    else if (s.contains("*")) return s.indexOf("*");
-    else return s.indexOf("/");
+  public static int parseFromHead(String s, String c) {
+    return Integer.parseInt(s.substring(0, s.indexOf(c)));
+  }
+
+  public static int parseFromBreak(String s, String c) {
+    return Integer.parseInt(s.substring(s.indexOf(c) + 1));
   }
 }
