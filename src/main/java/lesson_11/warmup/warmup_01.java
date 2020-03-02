@@ -1,9 +1,6 @@
-package lesson_11.warmup_01;
+package lesson_11.warmup;
 
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class warmup_01 {
@@ -20,7 +17,6 @@ public class warmup_01 {
 
     ArrayList<Character> chars = new ArrayList<>(map.keySet());
     Collections.sort(chars);
-
     for (char item : chars) {
       map.forEach((c, n) -> {
         if (item == c) System.out.printf("Letter: '%c', Count: %d, Positions:%s\n", c, n.size(), n);
