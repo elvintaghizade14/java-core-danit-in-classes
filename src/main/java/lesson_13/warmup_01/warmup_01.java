@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -28,11 +29,8 @@ public class warmup_01 {
     for (String line : in_cont) {
       String[] splited = line.split("[:]");
       String[] value = splited[1].split("[,]");
-      ArrayList<String> values = new ArrayList<>();
-      for (String el : value) {
-        values.add(el.trim());
-      }
-      result.put(splited[0].trim(), values);
+
+      result.put(splited[0].trim(), Arrays.stream(value).map(String::trim).collect(Collectors.toList()));
     }
     return result;
   }
@@ -44,7 +42,8 @@ public class warmup_01 {
     return br.lines().collect(Collectors.toList());
   }
 
-  private static StringBuilder firstMethod(HashMap<String, List<String>> subj_verbs, HashMap<String, List<String>> obj_verbs) {
+  private static StringBuilder firstMethod(HashMap<String, List<String>> subj_verbs,
+                                           HashMap<String, List<String>> obj_verbs) {
     StringBuilder sb = new StringBuilder();
     for (String sub : subj_verbs.keySet()) {
       for (String verb : subj_verbs.get(sub)) {
@@ -56,7 +55,8 @@ public class warmup_01 {
     return sb;
   }
 
-  private static List<String> secondMethodWithStream(HashMap<String, List<String>> subj_verbs, HashMap<String, List<String>> obj_verbs) {
+  private static List<String> secondMethodWithStream(HashMap<String, List<String>> subj_verbs,
+                                                     HashMap<String, List<String>> obj_verbs) {
     return subj_verbs.keySet().stream().flatMap(subj ->
             subj_verbs.get(subj).stream().flatMap(verb ->
                     obj_verbs.get(verb).stream().map(obj ->
