@@ -1,0 +1,45 @@
+|===========|
+|  Task.    |
+|===========|
+Sentences.
+
+So far, so good, but previous task generated meaningless sentences.
+
+Right now, the task is quite different.
+You still need generate sentences, but with rules.
+file: subj_verb.txt contains relations between subjects and verbs
+file: verb_obj.txt contains relations between verbs and objects.
+
+Compose them into meaningful sentences, and put them into the file sentences.txt
+------------
+|  Goal:   |
+------------
+print all meaningful sentences based on given associations:
+
+Noel wrote the book
+Noel wrote the letter
+Noel wrote the code
+Noel chased the ball
+Noel chased the dog
+Noel chased the cat
+Noel slept on the bed
+Noel slept on the mat
+Noel slept on the train
+The cat meowed at Noel
+The cat meowed at the door
+The cat meowed at the food cupboard
+The cat chased the ball
+The cat chased the dog
+The cat chased the cat
+The cat slept on the bed
+The cat slept on the mat
+The cat slept on the train
+The dog barked at the postman
+The dog barked at the car
+The dog barked at the cat
+The dog chased the ball
+The dog chased the dog
+The dog chased the cat
+The dog slept on the bed
+The dog slept on the mat
+The dog slept on the train
