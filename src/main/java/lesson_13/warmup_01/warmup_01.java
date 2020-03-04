@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -16,23 +15,9 @@ public class warmup_01 {
     List<String> obj_cont = read("verb_obj_.txt");
     HashMap<String, List<String>> obj_verbs = mapper(obj_cont);
 
-    StringBuilder sb = new StringBuilder();
-
-    for (String sub : subj_verbs.keySet()) {
-      for (String verb : subj_verbs.get(sub)) {
-        for (String obj : obj_verbs.get(verb)) {
-          sb.append(String.format("%s %s %s\n", sub, verb, obj));
-        }
-      }
-    }
-
-    List<String> result = subj_verbs.keySet().stream().flatMap(subj ->
-            subj_verbs.get(subj).stream().flatMap(verb ->
-                    obj_verbs.get(verb).stream().map(obj ->
-                            String.format("%s %s %s", subj, verb, obj)))).collect(Collectors.toList());
-
-    System.out.println(sb.toString());
+    System.out.println(firstMethod(subj_verbs, obj_verbs));
     System.out.println("---------------");
+    List<String> result = secondMethodWithStream(subj_verbs, obj_verbs);
     for (String line : result) {
       System.out.println(line);
     }
@@ -49,7 +34,6 @@ public class warmup_01 {
       }
       result.put(splited[0].trim(), values);
     }
-
     return result;
   }
 
@@ -58,5 +42,24 @@ public class warmup_01 {
     FileReader fr = new FileReader(file);
     BufferedReader br = new BufferedReader(fr);
     return br.lines().collect(Collectors.toList());
+  }
+
+  private static StringBuilder firstMethod(HashMap<String, List<String>> subj_verbs, HashMap<String, List<String>> obj_verbs) {
+    StringBuilder sb = new StringBuilder();
+    for (String sub : subj_verbs.keySet()) {
+      for (String verb : subj_verbs.get(sub)) {
+        for (String obj : obj_verbs.get(verb)) {
+          sb.append(String.format("%s %s %s\n", sub, verb, obj));
+        }
+      }
+    }
+    return sb;
+  }
+
+  private static List<String> secondMethodWithStream(HashMap<String, List<String>> subj_verbs, HashMap<String, List<String>> obj_verbs) {
+    return subj_verbs.keySet().stream().flatMap(subj ->
+            subj_verbs.get(subj).stream().flatMap(verb ->
+                    obj_verbs.get(verb).stream().map(obj ->
+                            String.format("%s %s %s", subj, verb, obj)))).collect(Collectors.toList());
   }
 }
