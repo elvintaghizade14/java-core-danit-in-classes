@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -25,7 +26,16 @@ public class warmup_01 {
       }
     }
 
+    List<String> result = subj_verbs.keySet().stream().flatMap(subj ->
+            subj_verbs.get(subj).stream().flatMap(verb ->
+                    obj_verbs.get(verb).stream().map(obj ->
+                            String.format("%s %s %s", subj, verb, obj)))).collect(Collectors.toList());
+
     System.out.println(sb.toString());
+    System.out.println("---------------");
+    for (String line : result) {
+      System.out.println(line);
+    }
   }
 
   private static HashMap<String, List<String>> mapper(List<String> in_cont) {
@@ -39,6 +49,7 @@ public class warmup_01 {
       }
       result.put(splited[0].trim(), values);
     }
+
     return result;
   }
 
