@@ -1,0 +1,5 @@
+first modukle -> java core
+java core finished at 06/03/2020.
+last implementations of single topics with covering DAO and MVC.
+next module -> Step Project (Booking)
+next module -> Algorithms and Data Structures
