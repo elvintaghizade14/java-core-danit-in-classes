@@ -9,7 +9,7 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class Sentences4App {
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args) throws FileNotFoundException {
     // read 1st
     List<String> f1 = read("subj_verb_.txt");
     // read second
@@ -57,15 +57,12 @@ public class Sentences4App {
       File file = new File(filename);
       BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 
-      sentences.forEach(new Consumer<Sentence>() {
-        @Override
-        public void accept(Sentence sentence) {
-          try {
-            bw.write(sentence.represent());
-            bw.write("\n");
-          } catch (IOException e) {
-            throw new RuntimeException(e);
-          }
+      sentences.forEach(sentence -> {
+        try {
+          bw.write(sentence.represent());
+          bw.write("\n");
+        } catch (IOException e) {
+          throw new RuntimeException(e);
         }
       });
 
@@ -80,4 +77,3 @@ public class Sentences4App {
     return new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
   }
 }
-
