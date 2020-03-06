@@ -1,16 +1,14 @@
 package lesson_13.warmup_01;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class warmup_01 {
   public static void main(String[] args) throws FileNotFoundException {
-    List<String> subj_cont = read("subj_verb_.txt");
+
+    List<String> subj_cont = read("subj_ver_.txt");
     HashMap<String, List<String>> subj_verbs = mapper(subj_cont);
 
     List<String> obj_cont = read("verb_obj_.txt");
