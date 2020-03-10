@@ -1,13 +1,13 @@
-package Step_Project_1.consoleOperations;
+package Step_Project_11.console_operations;
 
 import java.util.Scanner;
 
-public class ConsoleApp implements Console{
+public class ConsoleApp implements Console {
   Scanner sc = new Scanner(System.in);
 
   @Override
-  public void printLn(String line) {
-    System.out.println(line);
+  public void print(String line) {
+    System.out.print(line);
   }
 
   @Override
