@@ -1,23 +1,22 @@
 package Step_Project_1.services;
 
-import Step_Project_1.DAO.DAO;
-import Step_Project_1.DAO.DAOBookingFileText;
-import Step_Project_1.DAO.DAOFlightFileText;
-import Step_Project_1.DAO.DAOUserFileText;
+import Step_Project_1.dao.DAO;
+import Step_Project_1.dao.DAOBookingFileText;
+import Step_Project_1.dao.DAOFlightFileText;
 import Step_Project_1.base_classes.Booking;
 import Step_Project_1.base_classes.Flight;
+import Step_Project_1.base_classes.Passenger;
 import Step_Project_1.base_classes.Predicates;
-import Step_Project_1.base_classes.User;
 
-import java.util.Collections;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Service {
 
   DAO<Flight> flightDAO = new DAOFlightFileText("flights.txt");
   DAO<Booking> bookingDAO = new DAOBookingFileText("bookings.txt");
-  DAO<User> userDAO = new DAOUserFileText("users.txt");
 
   public String getMenuContents() {
     StringBuilder sb = new StringBuilder();
@@ -37,19 +36,19 @@ public class Service {
   }
 
   // menu - 2
-  public String getFlightById(int flightId) {
-    return flightDAO.get(flightId).map(Flight::represent).orElse("No flight found.");
+  public Optional<Flight> getFlightById(int flightId) {
+    return flightDAO.get(flightId);
   }
 
   // menu-3
-  public List<String> searchForFlight(String dest, String date, int numOfPeople) {
+  public List<String> searchForFlight(String dest, LocalDate date, int numOfPeople) {
     return flightDAO.getAllBy(Predicates.isBookable(dest, date, numOfPeople))
             .stream().map(Flight::represent).collect(Collectors.toList());
   }
 
-  public void makeBooking(String name, String surname, int flighId) {
-    flightDAO.get(flighId).map(f -> f.getFreeSpaces() - 1);
-    bookingDAO.create(new Booking(flighId, Collections.singletonList(new User(name, surname))));
+  public void makeBooking(int flighId, List<Passenger> passengers) {
+    flightDAO.get(flighId).map(f -> f.getFreeSpaces() - passengers.size());
+    bookingDAO.create(new Booking(flighId, passengers));
   }
 
   // menu-4

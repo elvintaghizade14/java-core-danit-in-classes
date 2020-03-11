@@ -1,7 +1,11 @@
 package Step_Project_1;
 
+import Step_Project_1.base_classes.Passenger;
 import Step_Project_1.controllers.Controller;
 import Step_Project_1.console_operations.ConsoleApp;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookingApp {
 
@@ -21,7 +25,7 @@ public class BookingApp {
 
         case 2: // Show flight info
           console.printLn("Enter flight id: ");
-          console.printLn(controller.getFlightInfoById(Integer.parseInt(console.readLn())));
+          console.printLn(controller.getFlightInfoById(console.readLn()));
           break;
 
         case 3: // Search and book flight
@@ -31,18 +35,27 @@ public class BookingApp {
           String date = console.readLn();
           console.printLn("Enter number of people: ");
           int numOfPeople = Integer.parseInt(console.readLn());
+
           console.printLn(controller.searchForFlights(dest, date, numOfPeople));
-          int actionOrFlightId = Integer.parseInt(console.readLn());
-          if (actionOrFlightId == 0) break;
-          else {
-            while (numOfPeople-- > 0) {
-              console.printLn("Enter your name: ");
-              String name = console.readLn();
-              console.printLn("Enter your name: ");
-              String surname = console.readLn();
-              controller.makeBooking(name, surname, actionOrFlightId);
-            }
+          if (controller.searchForFlights(dest, date, numOfPeople).length() == 0) {
+            console.print("There is no flights with the same properties");
             break;
+          } else {
+            console.print("Enter flight id or 0 to exit: ");
+            int actionOrFlightId = Integer.parseInt(console.readLn());
+            if (actionOrFlightId == 0) break;
+            else {
+              List<Passenger> passengers = new ArrayList<>();
+              while (numOfPeople-- > 0) {
+                console.printLn("Enter your name: ");
+                String name = console.readLn();
+                console.printLn("Enter your surname: ");
+                String surname = console.readLn();
+                passengers.add(new Passenger(name, surname));
+              }
+              controller.makeBooking(actionOrFlightId, passengers);
+              break;
+            }
           }
 
         case 4: //Cancel the booking

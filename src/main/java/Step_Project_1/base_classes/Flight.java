@@ -1,20 +1,23 @@
 package Step_Project_1.base_classes;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.UUID;
 
 public class Flight {
   private int id;
   private String flightDest;
-  private LocalDateTime flightDateTime;
+  private LocalDate flightDate;
+  private LocalTime flightTime;
   private int freeSpaces;
-
-  public static int counter = 99;
+  private static int counter = 0;
 
   // CONSTRUCTORS
-  public Flight(String flightDest, LocalDateTime flightDateTime, int freeSpaces) {
+  public Flight(String flightDest, LocalDate flightDate, LocalTime flightTime, int freeSpaces) {
     this.id = ++counter;
     this.flightDest = flightDest;
-    this.flightDateTime = flightDateTime;
+    this.flightTime = flightTime;
+    this.flightDate = flightDate;
     this.freeSpaces = freeSpaces;
   }
 
@@ -25,8 +28,8 @@ public class Flight {
   }
 
   public String represent() {
-    return String.format("%d|%s|%s|%d",
-            id, flightDest, flightDateTime, freeSpaces);
+    return String.format("%d|%s|%s|%s|%d",
+            id, flightDest, flightDate, flightTime, freeSpaces);
   }
 
   // GETTERS - SETTERS
@@ -36,10 +39,6 @@ public class Flight {
 
   public String getFlightDest() {
     return flightDest;
-  }
-
-  public LocalDateTime getFlightDateTime() {
-    return flightDateTime;
   }
 
   public int getFreeSpaces() {
@@ -54,17 +53,29 @@ public class Flight {
     this.flightDest = flightDest;
   }
 
-  public void setFlightDateTime(LocalDateTime flightDateTime) {
-    this.flightDateTime = flightDateTime;
-  }
-
   public void setFreeSpaces(int freeSpaces) {
     this.freeSpaces = freeSpaces;
   }
 
+  public LocalDate getFlightDate() {
+    return flightDate;
+  }
+
+  public void setFlightDate(LocalDate flightDate) {
+    this.flightDate = flightDate;
+  }
+
+  public LocalTime getFlightTime() {
+    return flightTime;
+  }
+
+  public void setFlightTime(LocalTime flightTime) {
+    this.flightTime = flightTime;
+  }
+
   @Override
   public String toString() {
-    return String.format("Flight[id=%d, flightDest='%s', flightDateTime=%s, freeSpaces=%d]",
-            id, flightDest, flightDateTime, freeSpaces);
+    return String.format("Flight[id=%d, flightDest='%s', flightDate=%s, flightTime=%s, freeSpaces=%d]",
+            id, flightDest, flightDate, flightTime, freeSpaces);
   }
 }

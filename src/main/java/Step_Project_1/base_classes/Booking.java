@@ -1,13 +1,17 @@
 package Step_Project_1.base_classes;
 
 import java.util.List;
+import java.util.UUID;
 
 public class Booking {
+  private int id;
   private int flightId;
-  private List<User> passengers;
+  private List<Passenger> passengers;
+  private static int counter = 0;
 
   // CONSTRUCTORS
-  public Booking(int flightId, List<User> passengers) {
+  public Booking(int flightId, List<Passenger> passengers) {
+    this.id = ++counter;
     this.flightId = flightId;
     this.passengers = passengers;
   }
@@ -19,7 +23,7 @@ public class Booking {
   }
 
   public String represent() {
-    return String.format("%d|%s", flightId, passengers);
+    return String.format("%d|%d|%s", flightId, id, passengers);
   }
 
   //GETTERS - SETTERS
@@ -27,7 +31,7 @@ public class Booking {
     return flightId;
   }
 
-  public List<User> getPassengers() {
+  public List<Passenger> getPassengers() {
     return passengers;
   }
 
@@ -35,7 +39,7 @@ public class Booking {
     this.flightId = flightId;
   }
 
-  public void setPassengers(List<User> passengers) {
+  public void setPassengers(List<Passenger> passengers) {
     this.passengers = passengers;
   }
 }

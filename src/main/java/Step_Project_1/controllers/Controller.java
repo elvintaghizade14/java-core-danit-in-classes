@@ -1,6 +1,12 @@
 package Step_Project_1.controllers;
 
+import Step_Project_1.base_classes.Flight;
+import Step_Project_1.base_classes.Passenger;
 import Step_Project_1.services.Service;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
 
 public class Controller {
 
@@ -16,17 +22,19 @@ public class Controller {
   }
 
   // menu-2
-  public String getFlightInfoById(int flightId) {
-    return service.getFlightById(flightId);
+  public String getFlightInfoById(String flightId) {
+    return service.getFlightById(Integer.parseInt(flightId))
+            .map(Flight::represent).orElse("No flight found.");
   }
 
   // menu - 3
   public String searchForFlights(String dest, String date, int numOfPeople) {
-    return String.join("\n", service.searchForFlight(dest, date, numOfPeople).toString());
+    return String.join("\n",
+            service.searchForFlight(dest, LocalDate.parse(date), numOfPeople).toString());
   }
 
-  public void makeBooking(String name, String surname, int flightId) {
-    service.makeBooking(name, surname, flightId);
+  public void makeBooking(int flightId, List<Passenger> passengers) {
+    service.makeBooking(flightId, passengers);
   }
 
   // menu - 4

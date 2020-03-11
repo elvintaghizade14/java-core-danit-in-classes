@@ -1,4 +1,4 @@
-package Step_Project_1.DAO;
+package Step_Project_1.dao;
 
 import Step_Project_1.base_classes.Booking;
 
