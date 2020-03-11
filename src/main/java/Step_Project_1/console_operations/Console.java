@@ -1,4 +1,4 @@
-package Step_Project_11.console_operations;
+package Step_Project_1.console_operations;
 
 public interface Console {
   void print(String line);

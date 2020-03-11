@@ -1,7 +1,7 @@
-package Step_Project_11;
+package Step_Project_1;
 
-import Step_Project_11.controllers.Controller;
-import Step_Project_11.console_operations.ConsoleApp;
+import Step_Project_1.controllers.Controller;
+import Step_Project_1.console_operations.ConsoleApp;
 
 public class BookingApp {
 
@@ -31,8 +31,19 @@ public class BookingApp {
           String date = console.readLn();
           console.printLn("Enter number of people: ");
           int numOfPeople = Integer.parseInt(console.readLn());
-          console.printLn(controller.searchAndBook(dest, date, numOfPeople));
-          break;
+          console.printLn(controller.searchForFlights(dest, date, numOfPeople));
+          int actionOrFlightId = Integer.parseInt(console.readLn());
+          if (actionOrFlightId == 0) break;
+          else {
+            while (numOfPeople-- > 0) {
+              console.printLn("Enter your name: ");
+              String name = console.readLn();
+              console.printLn("Enter your name: ");
+              String surname = console.readLn();
+              controller.makeBooking(name, surname, actionOrFlightId);
+            }
+            break;
+          }
 
         case 4: //Cancel the booking
           console.printLn("Enter booking id: ");

@@ -1,4 +1,4 @@
-package Step_Project_11.base_classes;
+package Step_Project_1.base_classes;
 
 import java.util.List;
 
@@ -29,5 +29,13 @@ public class Booking {
 
   public List<User> getPassengers() {
     return passengers;
+  }
+
+  public void setFlightId(int flightId) {
+    this.flightId = flightId;
+  }
+
+  public void setPassengers(List<User> passengers) {
+    this.passengers = passengers;
   }
 }

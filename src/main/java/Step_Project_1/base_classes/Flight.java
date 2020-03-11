@@ -1,8 +1,6 @@
-package Step_Project_11.base_classes;
+package Step_Project_1.base_classes;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.function.Predicate;
 
 public class Flight {
   private int id;
@@ -10,9 +8,11 @@ public class Flight {
   private LocalDateTime flightDateTime;
   private int freeSpaces;
 
+  public static int counter = 99;
+
   // CONSTRUCTORS
-  public Flight(int id, String flightDest, LocalDateTime flightDateTime, int freeSpaces) {
-    this.id = id;
+  public Flight(String flightDest, LocalDateTime flightDateTime, int freeSpaces) {
+    this.id = ++counter;
     this.flightDest = flightDest;
     this.flightDateTime = flightDateTime;
     this.freeSpaces = freeSpaces;
@@ -44,6 +44,22 @@ public class Flight {
 
   public int getFreeSpaces() {
     return freeSpaces;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public void setFlightDest(String flightDest) {
+    this.flightDest = flightDest;
+  }
+
+  public void setFlightDateTime(LocalDateTime flightDateTime) {
+    this.flightDateTime = flightDateTime;
+  }
+
+  public void setFreeSpaces(int freeSpaces) {
+    this.freeSpaces = freeSpaces;
   }
 
   @Override

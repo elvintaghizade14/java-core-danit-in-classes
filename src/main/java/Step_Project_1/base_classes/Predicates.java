@@ -1,4 +1,4 @@
-package Step_Project_11.base_classes;
+package Step_Project_1.base_classes;
 
 import java.time.LocalDateTime;
 import java.util.function.Predicate;
@@ -15,6 +15,8 @@ public class Predicates {
   }
 
   public static Predicate<Booking> isMyFlight(String name, String surname) {
-    return f -> f.getPassengers().forEach(u -> u.getName().equals(name) && u.getSurname().equals(surname));
+//    return b -> b.getPassengers().forEach(u -> u.getName().equals(name)
+//            && u.getSurname().equals(surname));
+    throw new IllegalArgumentException("Not implemented correctly...");
   }
 }

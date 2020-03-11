@@ -1,4 +1,4 @@
-package Step_Project_11.base_classes;
+package Step_Project_1.base_classes;
 
 public class User {
   private int id;
@@ -24,6 +24,12 @@ public class User {
     this.surname = surname;
     this.gender = gender;
     this.age = age;
+  }
+
+  public User(String name, String surname) {
+    this.id = ++counter;
+    this.name = name;
+    this.surname = surname;
   }
 
   // OWN METHODS
@@ -61,6 +67,34 @@ public class User {
 
   public int getAge() {
     return age;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setSurname(String surname) {
+    this.surname = surname;
+  }
+
+  public void setGender(String gender) {
+    this.gender = gender;
+  }
+
+  public void setAge(int age) {
+    this.age = age;
+  }
+
+  public static int getCounter() {
+    return counter;
+  }
+
+  public static void setCounter(int counter) {
+    User.counter = counter;
   }
 
   @Override
