@@ -12,7 +12,9 @@ public class BookingApp {
   ConsoleApp console = new ConsoleApp();
   Controller controller = new Controller();
 
+
   protected void run() {
+    controller.generate();
     boolean flag = true;
     while (flag) {
       console.printLn(controller.showMenu());

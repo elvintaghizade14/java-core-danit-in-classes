@@ -7,6 +7,7 @@ import Step_Project_1.base_classes.Booking;
 import Step_Project_1.base_classes.Flight;
 import Step_Project_1.base_classes.Passenger;
 import Step_Project_1.base_classes.Predicates;
+import Step_Project_1.gen.FlightGenerator;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -60,5 +61,11 @@ public class Service {
   public List<String> getMyFlights(String name, String surname) {
     return bookingDAO.getAllBy(Predicates.isMyFlight(name, surname))
             .stream().map(Booking::represent).collect(Collectors.toList());
+  }
+
+  public void genData() {
+    for (int i = 0; i < 25; i++) {
+      flightDAO.create(FlightGenerator.genFlight());
+    }
   }
 }

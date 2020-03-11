@@ -46,4 +46,8 @@ public class Controller {
   public String getMyFlights(String name, String surname) {
     return String.join("\n", service.getMyFlights(name.toLowerCase(), surname.toLowerCase()).toString());
   }
+
+  public void generate() {
+    service.genData();
+  }
 }

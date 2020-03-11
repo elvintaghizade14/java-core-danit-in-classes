@@ -24,7 +24,8 @@ public class Flight {
   // OWN METHODS
   public static Flight parse(String line) {
     String[] chunks = line.split("\\|");
-    throw new IllegalArgumentException("Not implemented yet...");
+//    throw new IllegalArgumentException("Not implemented yet...");
+    return null;
   }
 
   public String represent() {
