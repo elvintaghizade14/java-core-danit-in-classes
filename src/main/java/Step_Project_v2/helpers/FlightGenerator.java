@@ -7,7 +7,6 @@ import java.time.LocalTime;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
 
@@ -15,13 +14,13 @@ public class FlightGenerator {
   static Random gen = new Random();
 
   public static String cityGen() {
-    List<String> cities = Arrays.asList("Baku", "Moscow", "Ankara", "Tbilisi", "Berlin");
+    List<String> cities = Arrays.asList("Baku", "Moscow", "Ankara", "Tbilisi", "Berlin", "NEW_YORK", "DUBAI");
     return cities.get(gen.nextInt(cities.size()));
   }
 
   public static LocalDate genDate() {
     LocalDate start = LocalDate.now();
-    long days = ChronoUnit.DAYS.between(start, LocalDate.of(2020, Month.MARCH, 25));
+    long days = ChronoUnit.DAYS.between(start, LocalDate.of(2020, Month.MARCH, 20));
     return start.plusDays(gen.nextInt((int) days + 1));
   }
 
@@ -36,6 +35,7 @@ public class FlightGenerator {
   }
 
   public static Flight genFlight() {
-    return new Flight(cityGen(), genDate(), genTime(), gen.nextInt(10) * 10 + 10);
+    return new Flight(cityGen(), genDate(), genTime(),
+            gen.nextInt(10) * 10 + 10);
   }
 }

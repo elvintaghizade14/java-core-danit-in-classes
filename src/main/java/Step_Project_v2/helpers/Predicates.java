@@ -10,19 +10,18 @@ import java.util.function.Predicate;
 public class Predicates {
 
   public static Predicate<Flight> isSomeHoursBefore(int hours) {
-    return f -> f.getTime().isBefore(LocalTime.now().plusHours(hours)) &&
-            f.getTime().isAfter(LocalTime.now());
+    return f -> f.getDate().isBefore(LocalDate.now().plusDays(hours / 24 + 1));
   }
 
   public static Predicate<Flight> isBookable(String dest, LocalDate date, int numOfPeople) {
     return f -> f.getFreeSpaces() >= numOfPeople &&
-            f.getDest().toLowerCase().equals(dest) &&
-            f.getDate().isAfter(date) && f.getDate().isBefore(date.plusDays(1));
+            f.getDest().toLowerCase().equals(dest) && f.getDate().equals(date);
+//            f.getDate().isBefore(date.plusDays(1)) && f.getDate().isAfter(date);
   }
 
   public static Predicate<Booking> isMyFlight(String name, String surname) {
     return b -> b.getPassengers().stream().anyMatch(p ->
             p.getName().toLowerCase().equals(name) &&
-            p.getSurname().toLowerCase().equals(surname));
+                    p.getSurname().toLowerCase().equals(surname));
   }
 }

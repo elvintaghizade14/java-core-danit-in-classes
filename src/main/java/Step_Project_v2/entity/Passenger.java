@@ -21,11 +21,7 @@ public class Passenger{
     return surname;
   }
 
-  public void setSurname(String surname) {
-    this.surname = surname;
-  }
-
   public static String represent(Passenger p) {
-    return String.format("%s|%s", p.name, p.surname);
+    return String.format("%s::%s", p.name, p.surname);
   }
 }

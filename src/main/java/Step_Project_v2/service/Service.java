@@ -1,7 +1,9 @@
 package Step_Project_v2.service;
 
 import Step_Project_v2.dao.DAOBookingBin;
+import Step_Project_v2.dao.DAOBookingFileText;
 import Step_Project_v2.dao.DAOFlightBin;
+import Step_Project_v2.dao.DAOFlightFileText;
 import Step_Project_v2.entity.Booking;
 import Step_Project_v2.entity.Flight;
 import Step_Project_v2.entity.Passenger;
@@ -9,17 +11,18 @@ import Step_Project_v2.helpers.FlightGenerator;
 import Step_Project_v2.helpers.Predicates;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Service {
-  DAOBookingBin daoBooking;
-  DAOFlightBin daoFlight;
+  DAOBookingFileText daoBooking;
+  DAOFlightFileText daoFlight;
 
-  public Service(DAOBookingBin daoBookingBin, DAOFlightBin daoFlightBin) {
-    this.daoBooking = daoBookingBin;
-    this.daoFlight = daoFlightBin;
+  public Service(DAOBookingFileText daoBooking, DAOFlightFileText daoFlight) {
+    this.daoBooking = daoBooking;
+    this.daoFlight = daoFlight;
   }
 
   public List<String> getAllFlights() {
@@ -38,7 +41,7 @@ public class Service {
   }
 
   public void book(int flightId, List<Passenger> passengers) {
-    daoFlight.get(flightId).map(f -> f.getFreeSpaces() - passengers.size());
+    daoFlight.get(flightId).map(f -> f.setFreeSpaces(f.getFreeSpaces() - passengers.size()));
     daoBooking.create(new Booking(flightId, passengers));
   }
 
@@ -55,6 +58,10 @@ public class Service {
   public List<String> getMyFlights(String name, String surname) {
     return daoBooking.getAllBy(Predicates.isMyFlight(name, surname))
             .stream().map(Booking::represent).collect(Collectors.toList());
+  }
+
+  public void assFlight(Flight genFlight) {
+    daoFlight.create(genFlight);
   }
 
 //  public void addFlight() {

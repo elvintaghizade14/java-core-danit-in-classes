@@ -20,6 +20,14 @@ public class Flight {
     this.freeSpaces = freeSpaces;
   }
 
+  public Flight(int flightId, String dest, LocalDate date, LocalTime time, int freeSpaces) {
+    this.id = flightId;
+    this.dest = dest;
+    this.date = date;
+    this.time = time;
+    this.freeSpaces = freeSpaces;
+  }
+
   public int getId() {
     return id;
   }
@@ -30,10 +38,6 @@ public class Flight {
 
   public String getDest() {
     return dest;
-  }
-
-  public void setDest(String dest) {
-    this.dest = dest;
   }
 
   public LocalDate getDate() {
@@ -56,6 +60,10 @@ public class Flight {
     return freeSpaces;
   }
 
+  public void setDest(String dest) {
+    this.dest = dest;
+  }
+
   public void setFreeSpaces(int freeSpaces) {
     this.freeSpaces = freeSpaces;
   }
@@ -67,5 +75,12 @@ public class Flight {
   @Override
   public String toString() {
     return String.format("Flight{id=%d, dest='%s', date=%s, time=%s, freeSpaces=%d}", id, dest, date, time, freeSpaces);
+  }
+
+  public static Flight parse(String line) {
+    String[] chunks = line.split("\\|");
+    return new Flight(Integer.parseInt(chunks[0]), chunks[1], LocalDate.parse(chunks[2]),
+            LocalTime.parse(chunks[3]), Integer.parseInt(chunks[4])
+    );
   }
 }

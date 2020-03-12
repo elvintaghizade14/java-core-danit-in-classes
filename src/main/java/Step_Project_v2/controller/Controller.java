@@ -57,6 +57,10 @@ public class Controller {
     return String.join("\n", service.getMyFlights(name.toLowerCase(), surname.toLowerCase()));
   }
 
+  public void addFlight(Flight genFlight) {
+    service.assFlight(genFlight);
+  }
+
 //  public void addFlight() {
 //    service.addFlight();
 //  }
