@@ -10,7 +10,9 @@ import java.util.function.Predicate;
 public class Predicates {
 
   public static Predicate<Flight> isSomeHoursBefore(int hours) {
-    return f -> f.getDate().isBefore(LocalDate.now().plusDays(hours% 24 !=0 ? (hours/24+1): hours/24));
+//    return f -> f.getDate().isBefore(LocalDate.now().plusDays(hours% 24 !=0 ? (hours/24+1): hours/24));
+    return f-> (f.getDate().isEqual(LocalDate.now()) && f.getTime().isAfter(LocalTime.now()) ||
+            (f.getDate().isEqual(LocalDate.now().plusDays(1)) && f.getTime().isBefore(LocalTime.now())));
   }
 
   public static Predicate<Flight> isBookable(String dest, LocalDate date, int numOfPeople) {

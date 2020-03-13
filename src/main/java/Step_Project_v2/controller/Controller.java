@@ -8,10 +8,11 @@ import Step_Project_v2.service.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Controller {
-  Service service;
-  Console console;
+  private final Service service;
+  private final Console console;
 
   public Controller(ConsoleMain console, Service service) {
     this.service = service;
@@ -22,9 +23,24 @@ public class Controller {
     return String.join("\n", service.getAllFlights());
   }
 
+  private Optional<Integer> isNumber(String line) {
+    try {
+      int tmp = Integer.parseInt(line);
+      return Optional.of(tmp);
+    } catch (NumberFormatException x) {
+      return Optional.empty();
+    }
+  }
+
   public String search() {
-    console.print("Enter flight id: ");
-    return service.getFlightById(Integer.parseInt(console.readLn()));
+    while (true) {
+      Optional<Integer> input = isNumber(console.readLn());
+      console.print("Enter flight id: ");
+      if (input.isPresent()) {
+        return service.getFlightById();
+      }
+      console.printLn("You entered non integer value!\n");
+    }
   }
 
   public String searchForBook(String dest, LocalDate date, int numOfPeople) {

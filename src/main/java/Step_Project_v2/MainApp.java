@@ -3,10 +3,12 @@ package Step_Project_v2;
 import Step_Project_v2.controller.Controller;
 import Step_Project_v2.dao.DAOBookingFileText;
 import Step_Project_v2.dao.DAOFlightFileText;
+import Step_Project_v2.ex.FlightNotFoundException;
 import Step_Project_v2.io.ConsoleMain;
 import Step_Project_v2.service.Service;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 public class MainApp {
   public static void main(String[] args) {
@@ -34,13 +36,22 @@ public class MainApp {
           console.printLn(controller.show());
           break;
         case "2":
-          console.printLn(controller.search());
+          try {
+            console.printLn(controller.search());
+          } catch (FlightNotFoundException ex) {
+            console.printLn("No flight found");
+          }
           break;
         case "3":
           console.printLn("Enter destination: ");
           String dest = console.readLn();
-          console.printLn("Enter date (YYYY-MM-DD): ");
-          LocalDate date = LocalDate.parse(console.readLn());
+          LocalDate date = null;
+          try {
+            console.printLn("Enter date (YYYY-MM-DD): ");
+            date = LocalDate.parse(console.readLn());
+          } catch (DateTimeParseException ex) {
+            console.printLn("You entered wrong value!");
+          }
           console.printLn("Enter number of people: ");
           int numOfPeople = Integer.parseInt(console.readLn());
           console.print("\n");

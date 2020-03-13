@@ -5,6 +5,8 @@ import Step_Project_v2.dao.DAOFlightFileText;
 import Step_Project_v2.entity.Booking;
 import Step_Project_v2.entity.Flight;
 import Step_Project_v2.entity.Passenger;
+import Step_Project_v2.ex.FlightCannotCreateException;
+import Step_Project_v2.ex.FlightNotFoundException;
 import Step_Project_v2.helpers.FlightGenerator;
 import Step_Project_v2.helpers.Predicates;
 
@@ -29,7 +31,7 @@ public class Service {
 
   public String getFlightById(int flightId) {
     return daoFlight.get(flightId).map(Flight::represent)
-            .orElse("No flight found");
+            .orElseThrow(FlightNotFoundException::new);
   }
 
   public List<String> searchForBook(String dest, LocalDate date, int numOfPeople) {
@@ -42,7 +44,7 @@ public class Service {
     Optional<Flight> flightExtra = daoFlight.get(flightId);
     daoFlight.delete(flightId);
     flightExtra.ifPresent(f -> f.setFreeSpaces(f.getFreeSpaces() - passengers.size()));
-    daoFlight.create(flightExtra.orElseThrow(RuntimeException::new));
+    daoFlight.create(flightExtra.orElseThrow(FlightCannotCreateException::new));
   }
 
   public String cancelBooking(int bookingId) {
