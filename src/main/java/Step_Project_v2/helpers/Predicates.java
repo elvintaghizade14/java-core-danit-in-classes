@@ -10,7 +10,7 @@ import java.util.function.Predicate;
 public class Predicates {
 
   public static Predicate<Flight> isSomeHoursBefore(int hours) {
-    return f -> f.getDate().isBefore(LocalDate.now().plusDays(hours / 24 + 1));
+    return f -> f.getDate().isBefore(LocalDate.now().plusDays(hours% 24 !=0 ? (hours/24+1): hours/24));
   }
 
   public static Predicate<Flight> isBookable(String dest, LocalDate date, int numOfPeople) {
@@ -20,7 +20,7 @@ public class Predicates {
   }
 
   public static Predicate<Booking> isMyFlight(String name, String surname) {
-    return b -> b.getPassengers().stream().allMatch(p ->
+    return b -> b.getPassengers().stream().anyMatch(p ->
             p.getName().toLowerCase().trim().equals(name) &&
                     p.getSurname().toLowerCase().trim().equals(surname));
   }
