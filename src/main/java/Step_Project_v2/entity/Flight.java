@@ -83,4 +83,5 @@ public class Flight {
             LocalTime.parse(chunks[3]), Integer.parseInt(chunks[4])
     );
   }
+
 }

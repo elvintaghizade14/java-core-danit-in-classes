@@ -1,7 +1,6 @@
 package Step_Project_v2.dao;
 
 import Step_Project_v2.entity.Flight;
-import Step_Project_v2.helpers.FlightGenerator;
 
 import java.io.*;
 import java.util.ArrayList;

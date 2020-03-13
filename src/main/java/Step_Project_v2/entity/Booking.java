@@ -49,8 +49,7 @@ public class Booking {
 
   public String represent() {
     return String.format("%d/%d/%s",
-            id, flight_id, passengers.stream().map(Passenger::represent)
-                    .collect(Collectors.toList()).toString());
+            id, flight_id, passengers.stream().map(Passenger::represent));
   }
 
   public static Booking parse(String line) {

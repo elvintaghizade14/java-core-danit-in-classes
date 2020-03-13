@@ -20,8 +20,8 @@ public class Predicates {
   }
 
   public static Predicate<Booking> isMyFlight(String name, String surname) {
-    return b -> b.getPassengers().stream().anyMatch(p ->
-            p.getName().toLowerCase().equals(name) &&
-                    p.getSurname().toLowerCase().equals(surname));
+    return b -> b.getPassengers().stream().allMatch(p ->
+            p.getName().toLowerCase().trim().equals(name) &&
+                    p.getSurname().toLowerCase().trim().equals(surname));
   }
 }

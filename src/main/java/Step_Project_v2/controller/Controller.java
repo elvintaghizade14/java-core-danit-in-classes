@@ -1,6 +1,5 @@
 package Step_Project_v2.controller;
 
-import Step_Project_v2.entity.Flight;
 import Step_Project_v2.entity.Passenger;
 import Step_Project_v2.io.Console;
 import Step_Project_v2.io.ConsoleMain;
@@ -54,14 +53,19 @@ public class Controller {
     String name = console.readLn();
     console.print("Enter surname: ");
     String surname = console.readLn();
-    return String.join("\n", service.getMyFlights(name.toLowerCase(), surname.toLowerCase()));
+    return String.join("\n", service.getMyFlights(name.toLowerCase().trim(), surname.toLowerCase().trim()));
   }
 
-  public void addFlight(Flight genFlight) {
-    service.assFlight(genFlight);
+  public void addFlight() {
+    service.addFlight();
   }
 
-//  public void addFlight() {
-//    service.addFlight();
-//  }
+  public boolean getAll() {
+    return service.getAll();
+  }
+
+
+  public String showMenu() {
+    return service.showMenu();
+  }
 }

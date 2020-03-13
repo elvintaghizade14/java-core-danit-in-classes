@@ -36,6 +36,6 @@ public class FlightGenerator {
 
   public static Flight genFlight() {
     return new Flight(cityGen(), genDate(), genTime(),
-            gen.nextInt(10) * 10 + 10);
+            gen.nextInt(10) * 10 + 5);
   }
 }
