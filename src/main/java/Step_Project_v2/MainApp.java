@@ -63,10 +63,12 @@ public class MainApp {
         case "5":
           console.printLn(controller.getMyFlights());
           break;
-        default:
+        case "6":
           flag = false;
           console.printLn("Good bye...");
           break;
+        default:
+          console.printLn("You've entered wrong value");
       }
     }
   }
