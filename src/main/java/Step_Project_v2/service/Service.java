@@ -46,16 +46,14 @@ public class Service {
   }
 
   public String cancelBooking(int bookingId) {
-    Optional<Booking> booking = daoBooking.get(bookingId);
-    if (booking.isPresent()) {
-      Booking b = daoBooking.get(bookingId).get();
-      Optional<Flight> flightExtra = daoFlight.get(b.getFlight_id());
-      daoFlight.delete(b.getFlight_id());
+    return daoBooking.get(bookingId).map(b -> {
+      Flight newFlight = daoFlight.get(b.getFlight_id()).orElseThrow(RuntimeException::new);
+      newFlight.setFreeSpaces(newFlight.getFreeSpaces() + b.getPassengers().size());
       daoBooking.delete(bookingId);
-      flightExtra.ifPresent(f -> f.setFreeSpaces(f.getFreeSpaces() + b.getPassengers().size()));
-      daoFlight.create(flightExtra.orElseThrow(RuntimeException::new));
+      daoFlight.delete(b.getFlight_id());
+      daoFlight.create(newFlight);
       return "Booking deleted.";
-    } else return "There is no any booking.";
+    }).orElse("There is no any booking.");
   }
 
   public List<String> getMyFlights(String name, String surname) {

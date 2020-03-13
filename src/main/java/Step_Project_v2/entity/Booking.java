@@ -44,19 +44,25 @@ public class Booking {
   }
 
   public List<Passenger> getPassengers() {
-    return passengers;
+    return this.passengers;
   }
 
   public String represent() {
     return String.format("%d/%d/%s",
-            id, flight_id, passengers.stream().map(Passenger::represent));
+            id, flight_id, passengers.stream().map(Passenger::represent).collect(Collectors.toList()));
   }
 
   public static Booking parse(String line) {
     String[] chunks = line.split("/");
     return new Booking(Integer.parseInt(chunks[0]), Integer.parseInt(chunks[1]),
-            Arrays.stream(chunks[2].split("\\|"))
+            Arrays.stream(chunks[2].split(", "))
                     .map(s -> new Passenger(s.split("::")[0],
-                            s.split("::")[0])).collect(Collectors.toList()));
+                            s.split("::")[1])).collect(Collectors.toList()));
+  }
+
+  public String fileWrite() {
+    String passenger = passengers.stream().map(Passenger::represent).collect(Collectors.toList()).toString();
+    return String.format("%d/%d/%s", id, flight_id,
+            passenger.substring(1, passenger.length() - 1));
   }
 }

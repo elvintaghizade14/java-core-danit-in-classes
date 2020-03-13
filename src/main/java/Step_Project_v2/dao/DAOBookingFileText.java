@@ -20,7 +20,7 @@ public class DAOBookingFileText implements DAO<Booking> {
   private void write(Collection<Booking> bookings) {
     try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
       for (Booking b : bookings) {
-        bw.write(b.represent());
+        bw.write(b.fileWrite());
         bw.write("\n");
       }
     } catch (IOException ex) {
