@@ -1,12 +1,12 @@
-package Step_Project_v2;
+package Step_Project_Main_Version;
 
-import Step_Project_v2.controller.Controller;
-import Step_Project_v2.dao.DAOBookingFileText;
-import Step_Project_v2.dao.DAOFlightFileText;
-import Step_Project_v2.ex.FlightCannotCreateException;
-import Step_Project_v2.ex.FlightNotFoundException;
-import Step_Project_v2.io.ConsoleMain;
-import Step_Project_v2.service.Service;
+import Step_Project_Main_Version.controller.Controller;
+import Step_Project_Main_Version.dao.DAOBookingFileText;
+import Step_Project_Main_Version.dao.DAOFlightFileText;
+import Step_Project_Main_Version.ex.FlightCannotCreateException;
+import Step_Project_Main_Version.ex.FlightNotFoundException;
+import Step_Project_Main_Version.io.ConsoleMain;
+import Step_Project_Main_Version.service.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;

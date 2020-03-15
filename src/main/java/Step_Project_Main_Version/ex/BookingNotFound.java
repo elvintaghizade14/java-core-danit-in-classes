@@ -1,4 +1,4 @@
-package Step_Project_v2.ex;
+package Step_Project_Main_Version.ex;
 
 public class BookingNotFound extends RuntimeException {
 }

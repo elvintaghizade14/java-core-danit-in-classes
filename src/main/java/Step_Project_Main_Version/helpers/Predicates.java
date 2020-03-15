@@ -1,7 +1,7 @@
-package Step_Project_v2.helpers;
+package Step_Project_Main_Version.helpers;
 
-import Step_Project_v2.entity.Booking;
-import Step_Project_v2.entity.Flight;
+import Step_Project_Main_Version.entity.Booking;
+import Step_Project_Main_Version.entity.Flight;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

@@ -1,11 +1,11 @@
-package Step_Project_v2.controller;
+package Step_Project_Main_Version.controller;
 
-import Step_Project_v2.entity.Passenger;
-import Step_Project_v2.ex.BookingNotFound;
-import Step_Project_v2.ex.FlightNotFoundException;
-import Step_Project_v2.io.Console;
-import Step_Project_v2.io.ConsoleMain;
-import Step_Project_v2.service.Service;
+import Step_Project_Main_Version.entity.Passenger;
+import Step_Project_Main_Version.ex.BookingNotFound;
+import Step_Project_Main_Version.ex.FlightNotFoundException;
+import Step_Project_Main_Version.io.Console;
+import Step_Project_Main_Version.io.ConsoleMain;
+import Step_Project_Main_Version.service.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

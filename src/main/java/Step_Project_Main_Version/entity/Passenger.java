@@ -1,4 +1,4 @@
-package Step_Project_v2.entity;
+package Step_Project_Main_Version.entity;
 
 public class Passenger{
   private String name;

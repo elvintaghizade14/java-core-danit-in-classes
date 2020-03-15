@@ -1,6 +1,9 @@
-package Step_Project_v2.entity;
+package Step_Project_Main_Version.entity;
+
+import Step_Project_Main_Version.dao.DAOBookingFileText;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,7 +15,9 @@ public class Booking {
   public static int counter = 0;
 
   public Booking(int flight_id, List<Passenger> passengers) {
-    this.id = ++counter;
+    int lastBookingId = new DAOBookingFileText("bookings.txt").getAll().stream()
+            .max(Comparator.comparingInt(b -> b.id)).map(b -> b.id).orElse(0);
+    this.id = ++lastBookingId;
     this.flight_id = flight_id;
     this.passengers = passengers;
   }

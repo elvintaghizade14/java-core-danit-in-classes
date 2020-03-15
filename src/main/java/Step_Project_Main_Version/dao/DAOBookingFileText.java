@@ -1,6 +1,6 @@
-package Step_Project_v2.dao;
+package Step_Project_Main_Version.dao;
 
-import Step_Project_v2.entity.Booking;
+import Step_Project_Main_Version.entity.Booking;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -1,15 +1,15 @@
-package Step_Project_v2.service;
+package Step_Project_Main_Version.service;
 
-import Step_Project_v2.dao.DAOBookingFileText;
-import Step_Project_v2.dao.DAOFlightFileText;
-import Step_Project_v2.entity.Booking;
-import Step_Project_v2.entity.Flight;
-import Step_Project_v2.entity.Passenger;
-import Step_Project_v2.ex.BookingNotFound;
-import Step_Project_v2.ex.FlightCannotCreateException;
-import Step_Project_v2.ex.FlightNotFoundException;
-import Step_Project_v2.helpers.FlightGenerator;
-import Step_Project_v2.helpers.Predicates;
+import Step_Project_Main_Version.dao.DAOBookingFileText;
+import Step_Project_Main_Version.dao.DAOFlightFileText;
+import Step_Project_Main_Version.entity.Booking;
+import Step_Project_Main_Version.entity.Flight;
+import Step_Project_Main_Version.entity.Passenger;
+import Step_Project_Main_Version.ex.BookingNotFound;
+import Step_Project_Main_Version.ex.FlightCannotCreateException;
+import Step_Project_Main_Version.ex.FlightNotFoundException;
+import Step_Project_Main_Version.helpers.FlightGenerator;
+import Step_Project_Main_Version.helpers.Predicates;
 
 import java.time.LocalDate;
 import java.util.List;
