@@ -1,6 +1,8 @@
 package Step_Project_v2.controller;
 
 import Step_Project_v2.entity.Passenger;
+import Step_Project_v2.ex.BookingNotFound;
+import Step_Project_v2.ex.FlightNotFoundException;
 import Step_Project_v2.io.Console;
 import Step_Project_v2.io.ConsoleMain;
 import Step_Project_v2.service.Service;
@@ -8,7 +10,6 @@ import Step_Project_v2.service.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class Controller {
   private final Service service;
@@ -19,35 +20,35 @@ public class Controller {
     this.console = console;
   }
 
-  public String show() {
-    return String.join("\n", service.getAllFlights());
+  public String showMenu() {
+    return service.showMenu();
   }
 
-  private Optional<Integer> isNumber(String line) {
+  // menu - 1 - show Online-Board
+  public String showAllFlights() {
+    List<String> allFlights = service.getAllFlights();
+    return allFlights.size() != 0 ? String.join("\n", allFlights) : "Flight not found";
+  }
+
+  // menu - 2 - show flight by id
+  public String getFlightById() {
     try {
-      int tmp = Integer.parseInt(line);
-      return Optional.of(tmp);
-    } catch (NumberFormatException x) {
-      return Optional.empty();
-    }
-  }
-
-  public String search() {
-    while (true) {
-      Optional<Integer> input = isNumber(console.readLn());
       console.print("Enter flight id: ");
-      if (input.isPresent()) {
-        return service.getFlightById();
-      }
-      console.printLn("You entered non integer value!\n");
+      return service.getFlightById(Integer.parseInt(console.readLn()));
+    } catch (NumberFormatException ex) {
+      return "You entered non integer value!\n";
     }
   }
 
+  // menu - 3.1 - searching for appropriate bookable flight
   public String searchForBook(String dest, LocalDate date, int numOfPeople) {
-    return String.join("\n", service.searchForBook(dest.toLowerCase(), date, numOfPeople));
+    List<String> result = service.searchForBook(dest.toLowerCase(), date, numOfPeople);
+    if (result.size() == 0) throw new FlightNotFoundException();
+    else return String.join("\n", result);
   }
 
-  public void book(String flightId, int numOfPeople) {
+  // menu - 3.2 - booking - found flight above
+  public void book(int flightId, int numOfPeople) {
     List<Passenger> passengers = new ArrayList<>();
     while (numOfPeople-- > 0) {
       console.print("Enter name: ");
@@ -56,32 +57,39 @@ public class Controller {
       String surname = console.readLn();
       passengers.add(new Passenger(name, surname));
     }
-    service.book(Integer.parseInt(flightId), passengers);
+    service.book(flightId, passengers);
   }
 
+  // menu - 4 - cancel booking by id
   public String cancelBooking() {
-    console.print("Enter booking id: ");
-    return service.cancelBooking(Integer.parseInt(console.readLn()));
+    try {
+      console.print("Enter booking id: ");
+      return service.cancelBooking(Integer.parseInt(console.readLn()));
+    } catch (NumberFormatException ex) {
+      return "You entered non-integer value!\n";
+    } catch (BookingNotFound ex) {
+      return "Booking not found";
+    }
   }
 
+  // menu - 5 - show all flights by passenger's info
   public String getMyFlights() {
     console.print("Enter name: ");
     String name = console.readLn();
     console.print("Enter surname: ");
     String surname = console.readLn();
-    return String.join("\n", service.getMyFlights(name.toLowerCase().trim(), surname.toLowerCase().trim()));
+    try {
+      return String.join("\n", service.getMyFlights(name.toLowerCase().trim(), surname.toLowerCase().trim()));
+    } catch (FlightNotFoundException ex) {
+      return "Smth went wrong and flight not found";
+    }
+  }
+
+  public boolean isFlightsFileEmpty() {
+    return service.isFlightsFileEmpty();
   }
 
   public void addFlight() {
     service.addFlight();
-  }
-
-  public boolean getAll() {
-    return service.getAll();
-  }
-
-
-  public String showMenu() {
-    return service.showMenu();
   }
 }

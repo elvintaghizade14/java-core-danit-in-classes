@@ -5,6 +5,7 @@ import Step_Project_v2.dao.DAOFlightFileText;
 import Step_Project_v2.entity.Booking;
 import Step_Project_v2.entity.Flight;
 import Step_Project_v2.entity.Passenger;
+import Step_Project_v2.ex.BookingNotFound;
 import Step_Project_v2.ex.FlightCannotCreateException;
 import Step_Project_v2.ex.FlightNotFoundException;
 import Step_Project_v2.helpers.FlightGenerator;
@@ -24,15 +25,26 @@ public class Service {
     this.daoFlight = daoFlight;
   }
 
+  public String showMenu() {
+    StringBuilder sb = new StringBuilder();
+    return sb.append("1. Online - board\n")
+            .append("2. Show the flight info\n")
+            .append("3. Search and book a flight\n")
+            .append("4. Cancel the booking\n")
+            .append("5. My flights\n")
+            .append("6. Exit")
+            .toString();
+  }
+
   public List<String> getAllFlights() {
-    return daoFlight.getAllBy(Predicates.isSomeHoursBefore(24))
+    return daoFlight.getAllBy(Predicates.isSomeHoursBefore())
             .stream().map(Flight::represent).collect(Collectors.toList());
   }
 
   public String getFlightById(int flightId) {
     return daoFlight.get(flightId).map(Flight::represent)
             .orElseThrow(FlightNotFoundException::new);
-  }
+}
 
   public List<String> searchForBook(String dest, LocalDate date, int numOfPeople) {
     return daoFlight.getAllBy(Predicates.isBookable(dest, date, numOfPeople))
@@ -41,10 +53,10 @@ public class Service {
 
   public void book(int flightId, List<Passenger> passengers) {
     daoBooking.create(new Booking(flightId, passengers));
-    Optional<Flight> flightExtra = daoFlight.get(flightId);
+    Optional<Flight> updatedFlight = daoFlight.get(flightId);
     daoFlight.delete(flightId);
-    flightExtra.ifPresent(f -> f.setFreeSpaces(f.getFreeSpaces() - passengers.size()));
-    daoFlight.create(flightExtra.orElseThrow(FlightCannotCreateException::new));
+    updatedFlight.ifPresent(f -> f.setFreeSpaces(f.getFreeSpaces() - passengers.size()));
+    daoFlight.create(updatedFlight.orElseThrow(FlightCannotCreateException::new));
   }
 
   public String cancelBooking(int bookingId) {
@@ -55,30 +67,21 @@ public class Service {
       daoFlight.delete(b.getFlight_id());
       daoFlight.create(newFlight);
       return "Booking deleted.";
-    }).orElse("There is no any booking.");
+    }).orElseThrow(BookingNotFound::new);
   }
 
   public List<String> getMyFlights(String name, String surname) {
-    return daoBooking.getAllBy(Predicates.isMyFlight(name, surname))
+    List<String> result = daoBooking.getAllBy(Predicates.isMyFlight(name, surname))
             .stream().map(Booking::represent).collect(Collectors.toList());
+    if (result.size() == 0) throw new FlightNotFoundException();
+    else return result;
   }
 
-  public boolean getAll() {
+  public boolean isFlightsFileEmpty() {
     return daoFlight.getAll().size() == 0;
   }
 
   public void addFlight() {
     daoFlight.create(FlightGenerator.genFlight());
-  }
-
-  public String showMenu() {
-    StringBuilder sb = new StringBuilder();
-    return sb.append("1. Online - board\n")
-            .append("2. Show the flight info\n")
-            .append("3. Search and book a flight\n")
-            .append("4. Cancel the booking\n")
-            .append("5. My flights\n")
-            .append("6. Exit")
-            .toString();
   }
 }
