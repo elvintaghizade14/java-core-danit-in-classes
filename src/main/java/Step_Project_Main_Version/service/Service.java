@@ -5,7 +5,7 @@ import Step_Project_Main_Version.dao.DAOFlightFileText;
 import Step_Project_Main_Version.entity.Booking;
 import Step_Project_Main_Version.entity.Flight;
 import Step_Project_Main_Version.entity.Passenger;
-import Step_Project_Main_Version.ex.BookingNotFound;
+import Step_Project_Main_Version.ex.BookingNotFoundException;
 import Step_Project_Main_Version.ex.FlightCannotCreateException;
 import Step_Project_Main_Version.ex.FlightNotFoundException;
 import Step_Project_Main_Version.helpers.FlightGenerator;
@@ -67,7 +67,7 @@ public class Service {
       daoFlight.delete(b.getFlight_id());
       daoFlight.create(newFlight);
       return "Booking deleted.";
-    }).orElseThrow(BookingNotFound::new);
+    }).orElseThrow(BookingNotFoundException::new);
   }
 
   public List<String> getMyFlights(String name, String surname) {

@@ -1,7 +1,7 @@
 package Step_Project_Main_Version.controller;
 
 import Step_Project_Main_Version.entity.Passenger;
-import Step_Project_Main_Version.ex.BookingNotFound;
+import Step_Project_Main_Version.ex.BookingNotFoundException;
 import Step_Project_Main_Version.ex.FlightNotFoundException;
 import Step_Project_Main_Version.io.Console;
 import Step_Project_Main_Version.io.ConsoleMain;
@@ -67,7 +67,7 @@ public class Controller {
       return service.cancelBooking(Integer.parseInt(console.readLn()));
     } catch (NumberFormatException ex) {
       return "You entered non-integer value!\n";
-    } catch (BookingNotFound ex) {
+    } catch (BookingNotFoundException ex) {
       return "Booking not found";
     }
   }
