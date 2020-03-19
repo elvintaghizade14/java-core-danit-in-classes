@@ -7,9 +7,9 @@ package module_02.lesson_02;
  */
 
 
-public class warmup_01 {
+public class warmup_01_v2 {
   public static void main(String[] args) {
-    warmup_01 ref = new warmup_01();
+    warmup_01_v2 ref = new warmup_01_v2();
     System.out.println(ref.invertCase("AbCdE"));
     System.out.println(ref.toUpperCase("AbCdE"));
     System.out.println(ref.toLowerCase("AbCdE"));
