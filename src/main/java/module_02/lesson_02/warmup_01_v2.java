@@ -16,36 +16,27 @@ public class warmup_01_v2 {
   }
 
   String invertCase(String origin) {
-    StringBuilder result = new StringBuilder();
+    char[] chars = origin.toCharArray();
     for (int i = 0; i < origin.length(); i++) {
-      int c = origin.charAt(i);
-      if (c > 96 && c < 123)
-        result.append((char) (c - 32));
-      else result.append((char) (c + 32));
+      chars[i] = (char) (chars[i] ^ 32); // bit XOR operation
     }
-    return result.toString();
+    return new String(chars);
   }
 
   String toUpperCase(String origin) { // a -> A A -> A
-    StringBuilder result = new StringBuilder();
+    char[] chars = origin.toCharArray();
     for (int i = 0; i < origin.length(); i++) {
-      int c = origin.charAt(i);
-      if (c > 96 && c < 123)
-        result.append((char) (c - 32));
-      else result.append((char) c);
+      chars[i] = (char) ((chars[i] & 32) ^ chars[i]);
     }
-    return result.toString();
+    return new String(chars);
   }
 
   String toLowerCase(String origin) {
-    StringBuilder result = new StringBuilder();
+    char[] chars = origin.toCharArray();
     for (int i = 0; i < origin.length(); i++) {
-      int c = origin.charAt(i);
-      if (c > 64 && c < 91)
-        result.append((char) (c + 32));
-      else result.append((char) c);
+      chars[i] = (char) (chars[i] | 32);
     }
-    return result.toString();
+    return new String(chars);
   }
 
 
