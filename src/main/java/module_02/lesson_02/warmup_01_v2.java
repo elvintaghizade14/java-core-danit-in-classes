@@ -23,7 +23,7 @@ public class warmup_01_v2 {
     return new String(chars);
   }
 
-  String toUpperCase(String origin) { // a -> A A -> A
+  String toUpperCase(String origin) {
     char[] chars = origin.toCharArray();
     for (int i = 0; i < origin.length(); i++) {
       chars[i] = (char) ((chars[i] & 32) ^ chars[i]);
@@ -38,6 +38,4 @@ public class warmup_01_v2 {
     }
     return new String(chars);
   }
-
-
 }
