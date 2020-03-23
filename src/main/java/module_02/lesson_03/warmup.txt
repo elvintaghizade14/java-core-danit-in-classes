@@ -1,0 +1,9 @@
+given:
+array of integers:
+
+calculate the sum of the array:
+- no for;
+- no while;
+- no streams;
+- no any iteration approaches;
+- no google, please
