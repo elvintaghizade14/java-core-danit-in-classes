@@ -9,7 +9,6 @@ public class FactorialApp {
 
   public static void main(String[] args) {
     System.out.print("Enter a number:  ");
-    int f5 = fact(new Scanner(System.in).nextInt());
-    System.out.printf("Factorial: %d\n", f5);
+    System.out.printf("Factorial: %d\n", fact(new Scanner(System.in).nextInt()));
   }
 }
