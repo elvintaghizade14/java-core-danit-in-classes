@@ -7,3 +7,7 @@ calculate the sum of the array:
 - no streams;
 - no any iteration approaches;
 - no google, please
+
+
+workflow of recursion is similar to loop. Is this case what is the reason to use it?
+i time i heard that some companies do not allow to write recursion inside source code because there can be some privacy issues, is this true?
