@@ -1,4 +1,4 @@
-package module_02.lesson_03;
+package module_02.lesson_03.warmups;
 
 import java.util.Arrays;
 import java.util.Random;
