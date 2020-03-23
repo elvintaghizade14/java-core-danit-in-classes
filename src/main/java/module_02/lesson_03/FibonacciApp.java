@@ -2,7 +2,7 @@ package module_02.lesson_03;
 
 import java.util.Scanner;
 
-public class FibonaciApp {
+public class FibonacciApp {
 
   private static int fib(int num) {
     if (num == 0) throw new IllegalArgumentException("Wrong value!");
@@ -11,6 +11,6 @@ public class FibonaciApp {
 
   public static void main(String[] args) {
     System.out.print("Enter a number:  ");
-    System.out.printf("Factorial: %d\n", fib(new Scanner(System.in).nextInt()));
+    System.out.printf("Fibonacci: %d\n", fib(new Scanner(System.in).nextInt()));
   }
 }
