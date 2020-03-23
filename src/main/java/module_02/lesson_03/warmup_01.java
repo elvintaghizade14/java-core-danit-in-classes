@@ -11,7 +11,6 @@ public class warmup_01 {
     return data[index] + sum(data, index+1);
   }
 
-
   public static int sum(int[] data) {
     return sum(data, index++);
   }
