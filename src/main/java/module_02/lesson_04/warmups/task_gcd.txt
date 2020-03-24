@@ -1,0 +1,12 @@
+Write function
+
+int gcd(int a, int b)
+
+which will find the great common divisor
+
+description can be taken there
+
+https://en.wikipedia.org/wiki/Euclidean_algorithm
+
+- no for
+- no while
