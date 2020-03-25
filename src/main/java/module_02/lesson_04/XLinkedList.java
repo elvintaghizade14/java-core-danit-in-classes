@@ -30,10 +30,6 @@ public class XLinkedList {
     head = new Node(value, head);
   }
 
-  void prepend3(int value) {
-    head = new Node(value, head);
-  }
-
   void append(int value) {
     Node node = new Node(value);
     if (head == null) {
@@ -65,16 +61,93 @@ public class XLinkedList {
     return sj.toString();
   }
 
+  private void attach_next(Node curr, StringJoiner sj) {
+    if (curr == null) return;
+    sj.add(String.valueOf(curr.value));
+    attach_next(curr.next, sj);
+  }
+
   public String represent3r() {
     StringJoiner sj = new StringJoiner(",", "LL:(", ")");
-    represent3r(head, sj);
+    attach_next(head, sj);
     return sj.toString();
   }
 
-  private void represent3r(Node curr, StringJoiner sj) {
-    if (sj == null) return;
-    represent3r(curr.next, sj);
+  // size via traditional way:
+  int size() {
+    int size = 0;
+    Node curr = head;
+    while (curr != null) {
+      size++;
+      curr = curr.next;
+    }
+    return size;
   }
 
+  // size via head recursive (with runner recursive):
+  int sizer(Node curr) {
+    if (curr == null) return 0;
+    return sizer(curr.next) + 1;
+  }
+
+  int sizer() {
+    return sizer(head);
+  }
+
+  // size via tail recursive:
+  int sizetr(Node curr, int size) {
+    if (curr == null) return size;
+    return sizetr(curr.next, size + 1);
+  }
+
+  int sizetr() {
+    return sizetr(head, 0);
+  }
+
+  // contains via traditional way
+  boolean contains(int element) {
+    Node curr = head;
+    while (curr != null) {
+      if (curr.value == element) return true;
+      curr = curr.next;
+    }
+    return false;
+  }
+
+  boolean containsr(int element) {
+    throw new IllegalArgumentException("Not implemented yet...");
+  }
+
+  void reverse() {
+  }
+
+  void reverser() {
+  }
+
+  void merge(Node head2) {
+
+  }
+
+  boolean containsAt(int index, int element) {
+    throw new IllegalArgumentException("containsAt:Should be implemented t home");
+  }
+
+  void deleteHead() {
+  }
+
+  void deleteTail() {
+  }
+
+  void deleteAt(int index) {
+  }
+
+  void deleteValue(int value) {
+  }
+
+  void insertAfter(int index, int value) {
+  }
+
+  void insertBefore(int index, int value) {
+  }
 
 }
