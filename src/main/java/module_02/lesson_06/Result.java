@@ -1,9 +1,9 @@
 package module_02.lesson_06;
 
 public class Result {
-  boolean found;
-  int index;
-  int operations;
+  private boolean found;
+  private int index;
+  private int operations;
 
   public Result(boolean found, int index, int operations) {
     this.found = found;
