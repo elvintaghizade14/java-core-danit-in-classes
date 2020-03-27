@@ -1,17 +1,17 @@
 package module_02.lesson_06;
 
-public class MyAwesomeDataType {
+public class Result {
   boolean found;
   int index;
   int operations;
 
-  public MyAwesomeDataType(boolean found, int index, int operations) {
+  public Result(boolean found, int index, int operations) {
     this.found = found;
     this.index = index;
     this.operations = operations;
   }
 
-  public MyAwesomeDataType(boolean found) {
+  public Result(boolean found) {
     this.found = found;
   }
 
