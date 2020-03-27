@@ -1,4 +1,4 @@
-package module_02.lesson_06.wamrups;
+package module_02.lesson_06.warmups;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
