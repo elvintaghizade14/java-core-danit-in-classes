@@ -16,6 +16,6 @@ public class MyAwesomeDataType {
   }
 
   public String represent() {
-    return String.format("MyAwesomeDataType[found=%s, index=%d, operations=%d]", found, index, operations);
+    return String.format("[found=%s, index=%d, operations=%d]", found, index, operations);
   }
 }
