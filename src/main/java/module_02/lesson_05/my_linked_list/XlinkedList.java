@@ -289,6 +289,6 @@ public class XlinkedList {
   }
 
   public void merge(Node head2) {
-
+    throw new IllegalArgumentException("Not implemented yet!");
   }
 }
