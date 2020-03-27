@@ -47,7 +47,7 @@ public class BinarySearchApp2 {
     int rnd = sorted[(int) (Math.random()*1000)];
     MyAwesomeDataType conventional = find_conventional(unsorted, rnd);
     MyAwesomeDataType binary = find_binary(sorted, rnd);
-    System.out.println(conventional);
-    System.out.println(binary);
+    System.out.println(conventional.represent());
+    System.out.println(binary.represent());
   }
 }
