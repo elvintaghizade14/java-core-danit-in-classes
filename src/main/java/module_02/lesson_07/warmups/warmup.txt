@@ -1,0 +1,8 @@
+Generate 50 random numbers
+in the range [10..25]
+calculate the number of repetitions
+for each number
+find the number which appeared
+the minimal number of occurrences
+print that number
+print the number of occurrences
