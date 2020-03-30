@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Repetitions {
   public static void main(String[] args) {
-    int[] nums = randGen(10, 25, 50);
+    final int[] nums = randGen(10, 25, 50);
     Map<Integer, Integer> counts = new HashMap<>();
     int min = nums[0];
     for (int num : nums) {
