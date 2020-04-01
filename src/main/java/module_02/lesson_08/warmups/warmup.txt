@@ -1,12 +1,15 @@
 minimal pair in random array
 ----------------------------
-1.generate random array range [10, 50] count = 30
+1. generate random array range [2, 50] count = 30
 2. find minimal sum of adjacent pairs in the array
 print it index
 print the elements
 print their sum
 
+for example
+===========
 [26, 35, 93, 38, 5, 7, 18, 33, 7, 2, 70]
+  0   1   2   3  4  5   6   7  8
 index of pair: 8
 num1: 7
 num2: 2
