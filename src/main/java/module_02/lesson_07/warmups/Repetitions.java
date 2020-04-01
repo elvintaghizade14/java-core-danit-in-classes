@@ -14,13 +14,13 @@ public class Repetitions {
       for (int i : nums) {
         if (num == i) counter++;
       }
-      counts.put(num, counter);
       if (min > num) min = num;
+      counts.put(num, counter);
     }
-    System.out.printf("Number: %d, repetitions: %d",min, counts.get(min));
+    System.out.printf("Number: %d, repetitions: %d", min, counts.get(min));
   }
 
   private static int[] randGen(int left, int right, int limit) {
-    return new Random().ints(left, right+1).limit(limit).toArray();
+    return new Random().ints(left, right + 1).limit(limit).toArray();
   }
 }
