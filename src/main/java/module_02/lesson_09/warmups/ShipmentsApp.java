@@ -5,15 +5,12 @@ import java.util.Arrays;
 public class ShipmentsApp {
 
   static int fix(int[] w) {
-    int len = w.length;
-    int sum = Arrays.stream(w, 0, len).sum();
-    if (sum % len != 0) return -1;
-    int avg = sum / len;
-    int count = 0;
-    for (int item : w) {
-      if (item < avg) count += avg - item;
-    }
-    return count;
+    int sum = Arrays.stream(w).sum();
+    int avg = sum / w.length;
+    return sum % w.length != 0 ? -1 : Arrays.stream(w)
+            .map(i -> avg - i)
+            .filter(i -> i > 0)
+            .sum();
   }
 
   public static void main(String[] args) {
