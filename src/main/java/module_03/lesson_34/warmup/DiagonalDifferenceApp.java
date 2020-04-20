@@ -66,9 +66,7 @@ public class DiagonalDifferenceApp {
 
   private static int diagonalDifference4(List<List<Integer>> data) {
     int len = data.size();
-    return Math.abs(IntStream.range(0, len)
-            .map(i -> data.get(i).get(i) - data.get(i).get(len - 1 - i))
-            .sum());
+    return Math.abs(IntStream.range(0, len).map(i -> data.get(i).get(i) - data.get(i).get(len - 1 - i)).sum());
   }
 
   private static int diagonalDifference5(List<List<Integer>> data) {
@@ -77,8 +75,7 @@ public class DiagonalDifferenceApp {
 
   private static int diffRec(List<List<Integer>> data, int i, int diff) {
     if (i == data.size()) return Math.abs(diff);
-    diff += data.get(i).get(i) - data.get(i).get(data.size() - 1 - i);
-    return diffRec(data, i + 1, diff);
+    return diffRec(data, i + 1, data.get(i).get(i) - data.get(i).get(data.size() - 1 - i));
   }
 
 }
