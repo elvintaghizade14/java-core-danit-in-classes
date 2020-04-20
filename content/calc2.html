@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+<!--  the POST request will be sent not to not to /calc, BUT to /docalc,
+      and you need the another servlet to handle this  -->
+    <form method="post" action="docalc">
+        <input type="text" name="x"><br>
+        <input type="text" name="y"><br>
+        <input type="text" name="op"><br>
+        <input type="submit" value="doCalc">
+    </form>
+</body>
+</html>
