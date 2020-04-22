@@ -67,6 +67,18 @@
             <artifactId>freemarker</artifactId>
             <version>2.3.30</version>
         </dependency>
+        <!--        postgres ONLY-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.8</version>
+        </dependency>
+        <!--        MySQL-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.18</version>
+        </dependency>
     </dependencies>
 
 </project>
